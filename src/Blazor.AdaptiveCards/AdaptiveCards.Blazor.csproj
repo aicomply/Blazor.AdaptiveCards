@@ -3,6 +3,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <IsPackable>true</IsPackable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
     <Authors>AI Compliance inc.</Authors>
     <Company>AI Compliance inc.</Company>
     <Description>Adaptive Cards for Blazor provides powerful support for using Adaptive Cards inside Blazor Applications.</Description>
@@ -18,8 +19,6 @@
     <PackageTags>Adaptive Cards;Blazor</PackageTags>
     <PackageIcon>logo_128.png</PackageIcon>
     <Title>Simple Adaptive Cards for Blazor</Title>
-    <MinVerTagPrefix>v</MinVerTagPrefix>
-    <MinVerMinimumMajorMinor>2.0</MinVerMinimumMajorMinor>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
