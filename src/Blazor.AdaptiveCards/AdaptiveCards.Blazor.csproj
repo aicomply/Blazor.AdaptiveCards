@@ -3,21 +3,21 @@
     <TargetFramework>net9.0</TargetFramework>
     <IsPackable>true</IsPackable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>Mikael Koskinen</Authors>
-    <Company />
+    <Authors>AI Compliance inc.</Authors>
+    <Company>AI Compliance inc.</Company>
     <Description>Adaptive Cards for Blazor provides powerful support for using Adaptive Cards inside Blazor Applications.</Description>
     <PackageDescription>Adaptive Cards for Blazor provides powerful and fully featured support for using Adaptive Cards inside Blazor Applications. Some of the feature highlights include built-in support for templates, ability to handle actions in C# and many more.</PackageDescription>
     <PackageProjectUrl>https://adaptivecardsblazor.com</PackageProjectUrl>
-    <Copyright>©2019 Mikael Koskinen</Copyright>
-    <PackageId>AdaptiveCardsBlazor</PackageId>
-    <Product>AdaptiveCards.Blazor</Product>
+    <Copyright>©2025 AI Compliance inc.</Copyright>
+    <PackageId>SimpleAdaptiveCardsBlazor</PackageId>
+    <Product>Simple.AdaptiveCards.Blazor</Product>
     <AssemblyName>AdaptiveCards.Blazor</AssemblyName>
     <RootNamespace>AdaptiveCards.Blazor</RootNamespace>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/mikoskinen/Blazor.AdaptiveCards</RepositoryUrl>
+    <RepositoryUrl>https://github.com/aicomply/Blazor.AdaptiveCards</RepositoryUrl>
     <PackageTags>Adaptive Cards;Blazor</PackageTags>
     <PackageIcon>logo_128.png</PackageIcon>
-    <Title>Adaptive Cards for Blazor</Title>
+    <Title>Simple Adaptive Cards for Blazor</Title>
     <MinVerTagPrefix>v</MinVerTagPrefix>
     <MinVerMinimumMajorMinor>2.0</MinVerMinimumMajorMinor>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
@@ -33,6 +33,10 @@
 
   <ItemGroup>
     <PackageReference Include="AdaptiveCards.Rendering.Html" Version="2.7.3" />
+    <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.2.25">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
