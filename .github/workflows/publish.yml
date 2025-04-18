@@ -23,11 +23,11 @@ jobs:
       with:
         dotnet-version: 9.0.x
     - name: Restore dependencies
-      run: dotnet restore "${{env.WORKING_DIRECTORY}}/AdaptiveCards.Blazor.csproj" --ignore-failed-sources
+      run: dotnet restore "${{env.WORKING_DIRECTORY}}/Blazor.AdaptiveCards/AdaptiveCards.Blazor.csproj" --ignore-failed-sources
     - name: Build
-      run: dotnet build "${{env.WORKING_DIRECTORY}}/AdaptiveCards.Blazor.csproj" --configuration Debug --no-restore
+      run: dotnet build "${{env.WORKING_DIRECTORY}}/Blazor.AdaptiveCards/AdaptiveCards.Blazor.csproj" --configuration Debug --no-restore
     - name: pack
-      run: dotnet pack "${{env.WORKING_DIRECTORY}}/AdaptiveCards.Blazor.csproj"  --no-restore --no-build --configuration Debug --include-symbols --output ${{github.workspace}}\output
+      run: dotnet pack "${{env.WORKING_DIRECTORY}}/Blazor.AdaptiveCards/AdaptiveCards.Blazor.csproj"  --no-restore --no-build --configuration Debug --include-symbols --output ${{github.workspace}}\output
     - name: push package
       run: dotnet nuget push ${{github.workspace}}\output\*.nupkg  -k ${{secrets.NUGET_APIKEY}} -s "https://api.nuget.org/v3/index.json" 
        
