@@ -1,5 +1,4 @@
 using System;
-using AdaptiveCards.Blazor.Templating;
 using AdaptiveCards.Rendering.Html;
 
 namespace AdaptiveCards.Blazor
@@ -32,12 +31,6 @@ namespace AdaptiveCards.Blazor
         /// </summary>
         /// <value>The adaptive toggle visibility action provider.</value>
         public Action<AdaptiveToggleVisibilityAction, HtmlTag, AdaptiveRenderContext> AdaptiveToggleVisibilityActionProvider { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the adaptive card templating provider.
-        /// </summary>
-        /// <value>The adaptive card templating provider.</value>
-        public IAdaptiveCardTemplatingProvider AdaptiveCardTemplatingProvider { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether [allow templating error].

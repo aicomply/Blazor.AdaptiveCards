@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AdaptiveCards.Blazor.ActionHandlers;
 using AdaptiveCards.Blazor.Actions;
+using AdaptiveCards.Rendering;
 using AdaptiveCards.Rendering.Html;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Logging;
@@ -76,6 +77,9 @@ namespace AdaptiveCards.Blazor
 
         [CascadingParameter(Name = "RenderMode")]
         public RenderMode RenderMode { get; set; } = RenderMode.Synchronous;
+
+        [Parameter]
+        public string HostConfig { get; set; } = string.Empty;
 
         protected override async Task OnParametersSetAsync()
         {
@@ -153,7 +157,10 @@ namespace AdaptiveCards.Blazor
                 }
 
                 CurrentSchema = schema;
-
+                if ((!string.IsNullOrEmpty(HostConfig)))
+                {
+                    Renderer.HostConfig = AdaptiveHostConfig.FromJson(HostConfig);
+                }
                 var adaptiveCard = await CreateCardFromSchema(schema);
                 var renderedAdaptiveCard = Renderer.RenderCard(adaptiveCard.Card);
                 CardHtml = renderedAdaptiveCard.Html.ToString();

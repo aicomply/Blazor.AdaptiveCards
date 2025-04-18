@@ -3,11 +3,9 @@ using AdaptiveCards.Rendering.Html;
 using System;
 using AdaptiveCards.Blazor;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using System.Linq;
 using AdaptiveCards.Blazor.ActionHandlers;
 using AdaptiveCards.Blazor.Actions;
 using AdaptiveCards.Blazor.Extensions;
-using AdaptiveCards.Blazor.Templating;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection
@@ -47,12 +45,6 @@ namespace Microsoft.Extensions.DependencyInjection
                 AdaptiveCardActionCreators.CreateAdaptiveToggleVisibilityAction = options.AdaptiveToggleVisibilityActionProvider;
             }
 
-
-            if (options.AdaptiveCardTemplatingProvider == null)
-            {
-                services.AddSingleton<IAdaptiveCardTemplatingProvider, ScribanCardBinder>();
-            }
-
             AdaptiveCardRenderer.ActionTransformers.Register<AdaptiveOpenUrlAction>((action, tag, context) =>
             {
                 AdaptiveCardActionCreators.CreateAdaptiveOpenUrlAction(action, tag, context);
@@ -77,19 +69,6 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddSingleton<AdaptiveOpenUrlActionAdapter>();
             services.TryAddSingleton<ISubmitActionHandler, DefaultSubmitActionHandler>();
 
-            services.TryAddSingleton<IModelTemplateCatalog>(provider =>
-            {
-                var templateProviders = provider.GetServices(typeof(IModelTemplateProvider)).Cast<IModelTemplateProvider>();
-
-                var result = new ModelTemplateCatalog();
-
-                foreach (var templateProvider in templateProviders)
-                {
-                    result.Register(templateProvider);
-                }
-
-                return result;
-            });
 
             services.AddSingleton(options);
 
