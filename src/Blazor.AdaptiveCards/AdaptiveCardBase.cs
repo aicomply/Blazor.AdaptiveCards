@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AdaptiveCards.Blazor.ActionHandlers;
 using AdaptiveCards.Blazor.Actions;
+using AdaptiveCards.Blazor.Renderers;
 using AdaptiveCards.Rendering;
 using AdaptiveCards.Rendering.Html;
 using Microsoft.AspNetCore.Components;
@@ -144,6 +145,8 @@ namespace AdaptiveCards.Blazor
         {
             try
             {
+                Renderer.ElementRenderers.Set<AdaptiveActionSet>(CustomRenderers.ActionSetRender);
+                Renderer.ElementRenderers.Set<AdaptiveSubmitAction>(CustomRenderers.CustomAdaptiveActionRender);
                 if (string.IsNullOrWhiteSpace(schema))
                 {
                     CardHtml = "";
@@ -164,6 +167,9 @@ namespace AdaptiveCards.Blazor
                 var adaptiveCard = await CreateCardFromSchema(schema);
                 var renderedAdaptiveCard = Renderer.RenderCard(adaptiveCard.Card);
                 CardHtml = renderedAdaptiveCard.Html.ToString();
+                //This is to fix the action set layout in the card so that buttons wrap.
+                //This is nasty, but it turns out the adaptive card designers have ommited the ability to override the default layout of the action set.
+                CardHtml = CardHtml.Replace("<div class='ac-actionset' style='display: flex;flex-direction: row;justify-content: flex-start;'>", "<div class='ac-actionset' style='display: flex;flex-flow: wrap;justify-content: flex-start;box-sizing: border-box;'>");
 
                 if (RenderMode == RenderMode.Asynchronous)
                 {
