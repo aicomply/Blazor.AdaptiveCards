@@ -38,7 +38,10 @@ namespace AdaptiveCards.Blazor.Renderers
                     .Style("display", "inline-flex")
                     .Style("align-items", "center")
                     .Style("justify-content", "center")
-                    .AddClass("ac-pushButton");
+                    .Style("margin-bottom", "8px")
+                    .AddClass("ac-pushButton")
+                    .Attr("onclick", "window.blazorAdaptiveCards.submitData(this, id)")
+                    .Attr("id", GenerateRandomId());
                 if (!string.IsNullOrWhiteSpace(action.Style) && !string.Equals(action.Style, "default", StringComparison.OrdinalIgnoreCase))
                 {
                     if (string.Equals(action.Style, "positive", StringComparison.OrdinalIgnoreCase))
